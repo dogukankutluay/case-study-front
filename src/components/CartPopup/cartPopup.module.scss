@@ -1,0 +1,107 @@
+@import '../../assets/style/variables.module.scss';
+
+.cartPopupContainer {
+  z-index: 1010 !important;
+  background-color: white;
+  border-left: 1px solid $--dark-color;
+  border-bottom: 1px solid $--dark-color;
+
+  width: 400px;
+  position: fixed;
+  right: 0;
+  top: 30px;
+  .cartPopupContainerHead {
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+  .cartPopupContainerHead {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    div {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      p {
+        margin-right: 0.3rem;
+        border-bottom: 1px solid $--dark-color;
+        font-size: 13px;
+      }
+      svg {
+        width: 10px;
+      }
+    }
+  }
+  .cartPopupContainerCenter {
+    height: 438px;
+    border-bottom: 1px solid $--dark-color;
+    border-top: 1px solid $--dark-color;
+    overflow-y: scroll;
+    .cartPopupCardContainer {
+      border-bottom: 1px solid rgba(128, 128, 128, 0.289);
+      display: flex;
+      padding: 1.2rem 2rem;
+      box-sizing: border-box;
+      img {
+        width: 100px;
+        height: 140px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+      .cartPopupCardContainerInfos {
+        margin-left: 1.3rem;
+        h1 {
+          font-size: 14px;
+        }
+        p {
+          margin-top: 1rem;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .cartPopupContainerBottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 74px;
+    button {
+      width: 87%;
+      color: white;
+      font-weight: bold;
+      padding: 0.9rem;
+      box-sizing: border-box;
+      background-color: $--dark-color;
+    }
+  }
+  .emptyCartPopupContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+    h1 {
+      font-size: 15px;
+      font-weight: 500;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      background-color: $--dark-color;
+      color: white;
+      font-size: 14px;
+    }
+  }
+}
+.cartPopupShadow {
+  width: 100vw;
+  height: 100vh;
+  z-index: 1009;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

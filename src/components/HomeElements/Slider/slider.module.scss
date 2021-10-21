@@ -1,0 +1,24 @@
+.sliderContainer {
+  margin-top: 1px;
+  .sliderCarousel {
+    position: relative;
+    width: 100%;
+    img {
+      object-fit: contain;
+      width: 100vw;
+    }
+    .leftArrow,
+    .rightArrow {
+      position: absolute;
+      z-index: 100;
+      top: 50%;
+      cursor: pointer;
+    }
+    .leftArrow {
+      left: 0;
+    }
+    .rightArrow {
+      right: 0;
+    }
+  }
+}

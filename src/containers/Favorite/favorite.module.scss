@@ -1,0 +1,50 @@
+@import '../../assets/style/variables.module.scss';
+
+.favoriteContainer {
+  padding-top: 102px;
+  width: 100%;
+
+  .favoriteHead {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    height: 140px;
+    border-bottom: 1px solid $--dark-color;
+    h1 {
+      box-sizing: border-box;
+      font-size: 40px;
+      font-weight: 500;
+    }
+  }
+  .favoriteCenter {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    height: 100px;
+    p {
+      box-sizing: border-box;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .emptyFavoriteContainer {
+      padding: 2rem;
+      p {
+        a {
+          color: #209bdc;
+        }
+        a:hover {
+          border-bottom: 1px solid #209bdc;
+        }
+      }
+    }
+  }
+  .favoriteBottom {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}

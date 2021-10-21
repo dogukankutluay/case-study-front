@@ -1,0 +1,87 @@
+@import '../../assets/style/variables.module.scss';
+
+.cartCardContainer {
+  border: 1px solid $--dark-color;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  img {
+    width: 125px;
+    height: 166px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  .cartCardContainerInfos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    h1 {
+      font-size: 15px;
+    }
+    p {
+      font-size: 13px;
+    }
+  }
+  .cartCardContainerStock {
+    h1 {
+      font-size: 15px;
+      font-weight: 500;
+    }
+    div {
+      display: flex;
+      align-items: center;
+      border: 1px solid $--dark-color;
+      padding: 0.5rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    span {
+      margin-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      svg {
+        cursor: pointer;
+        padding: 0rem 0.2rem;
+        margin-bottom: 0.2rem;
+        width: 10px;
+        border-radius: 5px;
+        path {
+          fill: $--dark-color;
+        }
+      }
+      svg:hover {
+        background-color: rgba(128, 128, 128, 0.09);
+      }
+    }
+  }
+  .cartCardContainerTotalPrice {
+    h1 {
+      font-size: 15px;
+      font-weight: 500;
+    }
+    div {
+      margin-top: 1rem;
+      font-size: 14px;
+    }
+  }
+  .cartCardContainerActions {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
+    svg {
+      width: 15px;
+      cursor: pointer;
+      path {
+        fill: grey;
+      }
+    }
+    p {
+      cursor: pointer;
+      font-size: 14px;
+    }
+  }
+}

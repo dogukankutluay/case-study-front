@@ -1,0 +1,100 @@
+@import '../../assets/style/variables.module.scss';
+
+.cartContainer {
+  padding-top: 102px;
+  .cartContainerHead {
+    width: 90%;
+    padding: 3rem;
+    margin: auto;
+    h1 {
+      font-size: 40px;
+      font-weight: 500;
+    }
+  }
+  .cartContainerCenter {
+    width: 100%;
+    display: flex;
+    .cartContainerCenterLeft {
+      width: 70%;
+      .cartContainerCenterLeftWrapper {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    .cartContainerCenterRight {
+      width: 30%;
+      .cartContainerCenterRightWrapper {
+        height: 380px;
+        width: 95%;
+        border: 1px solid $--dark-color;
+        padding: 1.5rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .cartContainerCenterRightWrapperHead {
+          h1 {
+            font-size: 23px;
+            font-weight: 500;
+          }
+        }
+        .hr {
+          margin-top: -2.2rem;
+          border-bottom: 1px solid $--dark-color;
+        }
+        .cartContainerCenterRightWrapperInfos {
+          div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            h1 {
+              font-weight: 500;
+            }
+          }
+          div:last-child {
+            h1 {
+              font-weight: bold;
+            }
+          }
+        }
+        .cartContainerCenterLeftWrapperActions {
+          button {
+            background-color: $--dark-color;
+            color: white;
+            width: 100%;
+            padding: 0.8rem;
+            box-sizing: border-box;
+          }
+        }
+        .cartContainerCenterLeftWrapperNote {
+          p {
+            font-size: 13px;
+            line-height: 25px;
+          }
+        }
+      }
+    }
+  }
+  .emptyCartContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    box-sizing: border-box;
+    h1 {
+      font-size: 27px;
+      font-weight: 500;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      background-color: $--dark-color;
+      color: white;
+      font-size: 14px;
+    }
+  }
+}

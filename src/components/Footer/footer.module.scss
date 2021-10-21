@@ -1,0 +1,103 @@
+@import '../../assets/style/variables.module.scss';
+
+.footer {
+  background-color: $--footer-color;
+  padding: 0 1rem;
+  padding-top: 6rem;
+  .footerContainer {
+    display: flex;
+    width: 100%;
+    .leftFooter {
+      width: 50%;
+      .leftFooterContainer {
+        width: 60%;
+        .top {
+          height: 40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          h1 {
+            font-size: 15px;
+          }
+          .hr {
+            border-bottom: 1px solid rgb(0, 0, 0);
+          }
+        }
+        .center {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 150px;
+          margin: 2rem 0;
+          p {
+            font-size: 13px;
+            line-height: 24px;
+          }
+          .defaultInput {
+            height: 40px;
+            border: 1px solid rgba(128, 128, 128, 0.364);
+            padding-left: 0.7rem;
+          }
+          label {
+            display: flex;
+            align-items: center;
+            p {
+              margin-left: 1rem;
+            }
+          }
+        }
+        .bottom {
+          button {
+            padding: 1rem 4rem;
+            background-color: $--dark-color;
+            color: white;
+          }
+        }
+      }
+    }
+    .rightFooter {
+      width: 50%;
+      .rightFooterHead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: bold;
+        font-size: 14px;
+        text-align: start;
+        li {
+          width: 33%;
+        }
+      }
+      .rightFooterBottom {
+        display: flex;
+        align-items: center;
+        margin-top: 1.5rem;
+        ul {
+          width: 33%;
+          li {
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            font-size: 14px;
+          }
+        }
+      }
+      .hr {
+        margin-top: 1.4rem;
+        border-bottom: 1px solid rgb(0, 0, 0);
+      }
+    }
+  }
+  .footerBottom {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    align-items: center;
+    font-size: 14px;
+    p {
+      display: flex;
+      h1 {
+        margin-right: 0.4rem;
+      }
+    }
+  }
+}
