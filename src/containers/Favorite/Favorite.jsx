@@ -4,6 +4,20 @@ import ProductCard from '../../components/ProductElements/ProductCard';
 import { getFavorites } from '../../redux/action/favoriteActions';
 import { setCurrentProduct } from '../../redux/action/getOneProductAction';
 import { useDispatch, useSelector } from 'react-redux';
+import { gql, useQuery } from '@apollo/client';
+const GET_FAVORITE = gql`
+  query {
+    favorites {
+      _id
+      id
+      category
+      description
+      image
+      price
+      title
+    }
+  }
+`;
 const EmptyFavorite = () => {
   return (
     <div className={style.emptyFavoriteContainer}>
@@ -18,10 +32,13 @@ const EmptyFavorite = () => {
 function Favorite() {
   document.title = 'Favorilerim';
   const favorites = useSelector(state => state.favoriteReducer.data);
+  const { data } = useQuery(GET_FAVORITE);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getFavorites());
-  }, [dispatch]);
+    if (data) {
+      dispatch(getFavorites(data));
+    }
+  }, [data, dispatch]);
   useEffect(() => {
     dispatch(setCurrentProduct({}));
   }, [dispatch]);

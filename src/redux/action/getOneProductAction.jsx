@@ -1,18 +1,10 @@
-import axios from 'axios';
-import { BaseUrl, ApiConfig } from '../../constants/ApiConfig';
 import { GET_ONE_PRODUCT } from '../type';
 export const getOneProduct =
-  ({ id, setLoading }) =>
+  ({ setLoading, data }) =>
   dispatch => {
-    axios
-      .get(`${BaseUrl}${ApiConfig.products}/?id=${id}`)
-      .then(res => {
-        dispatch(setCurrentProduct(res.data.products));
-        setLoading(true);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    dispatch(setCurrentProduct(data?.getOneProduct));
+
+    setLoading(true);
   };
 export const setCurrentProduct = decoded => {
   return {

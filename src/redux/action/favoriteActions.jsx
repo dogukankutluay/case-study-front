@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BaseUrl, ApiConfig } from '../../constants/ApiConfig';
 import { SET_CURRENT_FAVORITES } from '../type';
+
 export const addFavorite =
   ({ body }) =>
   dispatch => {
@@ -23,13 +24,14 @@ export const deleteFavorite =
       })
       .catch(err => {});
   };
-export const getFavorites = () => dispatch => {
-  axios
-    .get(`${BaseUrl}${ApiConfig.favorite.get}`)
-    .then(res => {
-      dispatch(setCurrentFavorites(res.data.favorites));
-    })
-    .catch(err => {});
+export const getFavorites = data => dispatch => {
+  dispatch(setCurrentFavorites(data.favorites));
+
+  // axios
+  //   .get(`${BaseUrl}${ApiConfig.favorite.get}`)
+  //   .then(res => {
+  //   })
+  //   .catch(err => {});
 };
 export const setCurrentFavorites = decoded => {
   return {

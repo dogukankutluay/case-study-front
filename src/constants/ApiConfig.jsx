@@ -1,7 +1,7 @@
-// const local = 'http://localhost:8080';
-const heroku = 'https://case-study-api.herokuapp.com';
+const local = 'http://localhost:8080';
+// const heroku = 'https://case-study-api.herokuapp.com';
 
-export const BaseUrl = heroku;
+export const BaseUrl = local;
 
 export const ApiConfig = {
   products: '/api/product/getProducts',

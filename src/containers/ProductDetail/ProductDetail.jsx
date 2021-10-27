@@ -7,25 +7,78 @@ import { useParams } from 'react-router';
 import {
   addFavorite,
   deleteFavorite,
+  getFavorites,
 } from '../../redux/action/favoriteActions';
 import {
   addCartAction,
   cartPopupShowAction,
 } from '../../redux/action/cartActions';
+import { gql, useMutation, useQuery } from '@apollo/client';
+const GET_FAVORITE = gql`
+  query {
+    favorites {
+      _id
+      id
+      category
+      description
+      image
+      price
+      title
+    }
+  }
+`;
+const GET_ONE_PRODUCT = gql`
+  mutation TE($id: Int) {
+    getOneProduct(id: $id) {
+      id
+      category
+      description
+      image
+      price
+      title
+    }
+  }
+`;
+
+const ADD_FAVORITE = gql`
+  mutation DE($favorite: FavoriteInput) {
+    addFavorite(favorite: $favorite) {
+      success
+      message
+    }
+  }
+`;
+const DELETE_FAVORITE = gql`
+  mutation DE($id: Int) {
+    deleteFavorite(id: $id) {
+      success
+      message
+    }
+  }
+`;
 function ProductDetail() {
   const productDetail = useSelector(state => state.getOneProductReducer.data);
   const favorites = useSelector(state => state.favoriteReducer.data);
-
+  const [getOneProductMuta, { data }] = useMutation(GET_ONE_PRODUCT);
+  const [addFavoriteMuta, { addFavoriteData }] = useMutation(ADD_FAVORITE);
+  const [deleteFavoriteMuta, { deleteFavoriteData }] =
+    useMutation(DELETE_FAVORITE);
+  const favoritesData = useQuery(GET_FAVORITE);
+  console.log(favoritesData?.data?.favorites);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const { id } = useParams();
   if (productDetail?.title) {
     document.title = productDetail.title;
   }
-
   useEffect(() => {
-    dispatch(getOneProduct({ id, setLoading }));
-  }, [dispatch, id]);
+    getOneProductMuta({ variables: { id: Number(id) } });
+  }, [getOneProductMuta, id, favoritesData]);
+  useEffect(() => {
+    if (data) {
+      dispatch(getOneProduct({ setLoading, data }));
+    }
+  }, [data, dispatch, getOneProductMuta, id]);
   return (
     <>
       {loading || productDetail ? (
@@ -69,14 +122,29 @@ function ProductDetail() {
                   .length ? (
                   <h1
                     onClick={() => {
-                      dispatch(deleteFavorite({ id: productDetail.id }));
+                      deleteFavoriteMuta({
+                        variables: { id: productDetail.id },
+                      });
+                      setTimeout(() => {
+                        favoritesData.refetch();
+                      }, 1000);
+                      // dispatch(deleteFavorite({ id: productDetail.id }));
                     }}>
                     FAVORİLERDEN KALDIR
                   </h1>
                 ) : (
                   <h1
                     onClick={() => {
-                      dispatch(addFavorite({ body: productDetail }));
+                      let favorite = productDetail;
+                      delete favorite.__typename;
+                      addFavoriteMuta({
+                        variables: { favorite: favorite },
+                      });
+                      setTimeout(() => {
+                        favoritesData.refetch();
+                      }, 1000);
+
+                      // dispatch(addFavorite({ body: productDetail }));
                     }}>
                     FAVORİLERE EKLE
                   </h1>

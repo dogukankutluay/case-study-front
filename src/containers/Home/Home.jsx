@@ -5,14 +5,30 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllProduct } from '../../redux/action/getAllProductAction';
 import { setCurrentProduct } from '../../redux/action/getOneProductAction';
 import ProductCard from '../../components/ProductElements/ProductCard';
+import { gql, useQuery } from '@apollo/client';
+const GET_PRODUCTS = gql`
+  query {
+    products {
+      id
+      category
+      description
+      image
+      price
+      title
+    }
+  }
+`;
 function Home() {
   const products = useSelector(state => state.getAllProductReducer.data);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const { data } = useQuery(GET_PRODUCTS);
   useEffect(() => {
     document.title = 'Ana Sayfa';
-    dispatch(getAllProduct({ setLoading }));
-  }, [dispatch]);
+    if (data) {
+      dispatch(getAllProduct({ setLoading, data: data.products }));
+    }
+  }, [data, dispatch]);
   useEffect(() => {
     dispatch(setCurrentProduct({}));
   }, [dispatch]);
@@ -20,7 +36,7 @@ function Home() {
     <div className={style.homePage}>
       <Slider />
       <div className={style.homePageProductWrapper}>
-        {loading || products
+        {loading || products?.length
           ? products.map((product, index) => {
               return <ProductCard product={product} key={index} />;
             })
